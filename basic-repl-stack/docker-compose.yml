@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  # node 1 in replica set
+  mongo-1:
+    image: mongo:4.4-bionic
+    container_name: mongo-1
+    restart: unless-stopped
+    ports:
+      - 27011:27011
+    networks:
+      - default
+    command: ["--port", "27011", "--replSet", "mongo-repl-set"]
+  # node 2 in replica set
+  mongo-2:
+    image: mongo:4.4-bionic
+    container_name: mongo-2
+    restart: unless-stopped
+    ports:
+      - 27012:27012
+    networks:
+      - default
+    command: ["--port", "27012", "--replSet", "mongo-repl-set"]
+  # node 3 in replica set
+  mongo-3:
+    image: mongo:4.4-bionic
+    container_name: mongo-3
+    restart: unless-stopped
+    ports:
+      - 27013:27013
+    networks:
+      - default
+    command: ["--port", "27013", "--replSet", "mongo-repl-set"]
+networks:
+  default:
+    name: mongo-net
+    driver: bridge

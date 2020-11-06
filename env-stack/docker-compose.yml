@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  mongo-1:
+    image: mongo:4.4-bionic
+    container_name: mongo-1
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    networks:
+      - default
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=events_db
+    volumes:
+      - type: volume
+        source: mongo-data-db
+        target: /data/db
+      - type: bind
+        source: ~/mongo-stack/scripts/events.js
+        target: /docker-entrypoint-initdb.d/events.js
+        read_only: true
+networks:
+  default:
+    name: mongo-net
+    driver: bridge
+volumes:
+  mongo-data-db:

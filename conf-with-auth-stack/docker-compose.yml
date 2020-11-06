@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  mongo-1:
+    image: mongo:4.4-bionic
+    container_name: mongo-1
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    networks:
+      - default
+    volumes:
+      - type: bind
+        source: ~/mongo-stack/data/db
+        target: /data/db
+      - type: bind
+        source: ~/mongo-stack/config/mongod.conf
+        target: /etc/mongod.conf
+        read_only: true
+    command: mongod --config /etc/mongod.conf
+networks:
+  default:
+    name: mongo-net
+    driver: bridge
