@@ -26,5 +26,16 @@ _MongoDB Stack_ is a project that provides a collection of examples that show ho
   
   Host a 3-node MongoDB replica set using _docker_ and _docker-compose_.
 
+- [Database Seed](https://github.com/drminnaar/mongodb-stack/tree/main/seed-stack)
+
+  Host a single MongoDB instance and seed the database with some initial data. We use the sample _MFlix_ database that is available from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) to seed the database.
+
+---
+
 [Docker]: https://docs.docker.com/
 [Docker-Compose]: https://docs.docker.com/compose/
+[MongoDB Docs]: https://docs.mongodb.com
+[MongoDB Atlas]: https://www.mongodb.com/cloud/atlas
+[MongoDB Documentation]: https://docs.atlas.mongodb.com
+[Daas]: https://en.wikipedia.org/wiki/Data_as_a_service
+[MongoDB Compass]: https://www.mongodb.com/products/compass
